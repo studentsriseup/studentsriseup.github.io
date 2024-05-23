@@ -1,3 +1,5 @@
+Sure! Here's an updated version with a different style for the Eaglercraft button to indicate that it is not currently working:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,14 +43,24 @@
         a {
             display: inline-block;
             padding: 12px 25px;
-            background-color: #007BFF;
-            color: #fff;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.1em;
             transition: background-color 0.3s;
         }
-        a:hover {
+        .eaglercraft {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+        .eaglercraft:hover {
+            background-color: #ccc;
+        }
+        .active {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .active:hover {
             background-color: #0056b3;
         }
     </style>
@@ -58,9 +70,9 @@
         <h1>Welcome to School Springpod</h1>
         <p>This website disguises itself as Springpod for school purposes. Created by an anonymous developer.</p>
         <div class="links">
-            <a href="eaglercraft.html">Eaglercraft (Currently not working) (Hidden by Aerospace Springpod)</a>
-            <a href="cityguesser.html">City Guesser (Hidden by Traffic Springpod)</a>
-            <a href="infinitecraft.html">Infinite Craft (Hidden by British Library Springpod)</a>
+            <a href="eaglercraft.html" class="eaglercraft">Eaglercraft (Currently not working) (Hidden by Aerospace Springpod)</a>
+            <a href="cityguesser.html" class="active">City Guesser (Hidden by Traffic Springpod)</a>
+            <a href="infinitecraft.html" class="active">Infinite Craft (Hidden by British Library Springpod)</a>
         </div>
     </div>
 </body>
