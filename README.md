@@ -1,7 +1,3 @@
-Sure! Here's a GitHub description for your website:
-
----
-
 ## Students Rise Up
 
 ### Overview
@@ -17,7 +13,3 @@ We welcome contributions to help expand and improve Students Rise Up. Feel free 
 
 ### License
 [MIT License](LICENSE)
-
----
-
-Feel free to tweak this description to better suit your project's specifics!
