@@ -7,15 +7,17 @@
     <link id="favicon" rel="icon" href="https://i.postimg.cc/7ZCmQx33/favicon.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
         }
         .container {
             text-align: center;
@@ -23,8 +25,9 @@
             padding: 30px 50px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
             max-width: 800px;
+            width: 100%;
+            display: block; /* Ensure container is visible initially */
         }
         h1 {
             color: #333;
@@ -52,9 +55,8 @@
             border-radius: 5px;
             font-size: 1.1em;
             transition: background-color 0.3s;
-            color: #333;
-            background-color: #007BFF;
             color: #fff;
+            background-color: #007BFF;
         }
         a:hover {
             background-color: #0056b3;
@@ -64,6 +66,12 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: none; /* Hidden initially, shown when a link is clicked */
+        }
     </style>
 </head>
 <body>
@@ -71,7 +79,6 @@
         <h1 id="page-title">Welcome to School Springpod</h1>
         <p id="page-description">This website disguises itself as Springpod for school purposes. Created by an anonymous developer.</p>
         
-        <!-- Toggle menu for selecting a different page to camouflage -->
         <div class="toggle-menu">
             <label for="page-select">Choose camouflage mode:</label>
             <select id="page-select">
@@ -82,14 +89,16 @@
         </div>
 
         <div class="links">
-            <a href="cityguesser.html">City Guesser</a>
-            <a href="infinitecraft.html">Infinite Craft</a>
+            <a href="#" id="cityguesser-link">City Guesser</a>
+            <a href="#" id="infinitecraft-link">Infinite Craft</a>
         </div>
 
         <div class="readme" id="readme">
             <!-- Content will be inserted here -->
         </div>
     </div>
+
+    <iframe id="content-iframe" title="Embedded Website" allow="autoplay; fullscreen; gamepad; keyboard; pointer-lock" sandbox="allow-same-origin allow-scripts allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-presentation"></iframe>
 
     <script>
         // Load and render README content
@@ -102,21 +111,19 @@
                 console.error('Error fetching README:', error);
             });
 
-        // Get the current year for dynamic title
-        const currentYear = new Date().getFullYear();
-        const springpodTitle = `The World of The British Library [April '${String(currentYear).slice(-2)}] - Springpod`;
-
         // Elements to change
         const pageSelect = document.getElementById('page-select');
         const favicon = document.getElementById('favicon');
         const pageTitle = document.getElementById('page-title');
         const pageDescription = document.getElementById('page-description');
+        const iframe = document.getElementById('content-iframe');
+        const container = document.querySelector('.container');
 
         // Toggle title, favicon, and text based on selection
         pageSelect.addEventListener('change', function() {
             switch (pageSelect.value) {
                 case 'springpod':
-                    document.title = springpodTitle;
+                    document.title = `The World of The British Library [April '24] - Springpod`;
                     favicon.href = 'https://i.postimg.cc/7ZCmQx33/favicon.png';
                     pageTitle.innerText = 'Welcome to School Springpod';
                     pageDescription.innerText = 'This website disguises itself as Springpod for school purposes. Created by an anonymous developer.';
@@ -134,6 +141,24 @@
                     pageDescription.innerText = 'This website camouflages as EduLink One for educational purposes. Created by an anonymous developer.';
                     break;
             }
+        });
+
+        // Function to show iframe with the specified URL
+        function showIframe(url) {
+            iframe.src = url;
+            iframe.style.display = 'block';
+            container.style.display = 'none';
+        }
+
+        // Event listeners for links to show iframe instead of redirecting
+        document.getElementById('cityguesser-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showIframe('https://virtualvacation.us/');
+        });
+
+        document.getElementById('infinitecraft-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showIframe('https://infinitecraft.com/');
         });
     </script>
 </body>
