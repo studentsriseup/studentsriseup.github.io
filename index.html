@@ -90,7 +90,7 @@
 
         <div class="links">
             <a href="#" id="cityguesser-link">City Guesser</a>
-            <a href="#" id="infinitecraft-link">Infinite Craft</a>
+            <a href="#" id="eaglercraft-link">Eaglercraft: Minecraft Unblocked in Browser</a>
         </div>
 
         <div class="readme" id="readme">
@@ -150,15 +150,16 @@
             container.style.display = 'none';
         }
 
-        // Event listeners for links to show iframe instead of redirecting
+        // Event listener for City Guesser link to show iframe
         document.getElementById('cityguesser-link').addEventListener('click', (e) => {
             e.preventDefault();
             showIframe('https://virtualvacation.us/');
         });
 
-        document.getElementById('infinitecraft-link').addEventListener('click', (e) => {
+        // Event listener for Eaglercraft link to show iframe
+        document.getElementById('eaglercraft-link').addEventListener('click', (e) => {
             e.preventDefault();
-            showIframe('https://infinitecraft.com/');
+            showIframe('https://eaglercraft.q13x.com/');
         });
     </script>
 </body>
