@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Springpod</title>
-    <link rel="icon" href="https://i.postimg.cc/7ZCmQx33/favicon.png" type="image/png">
+    <title>The World of The British Library [April '24] - Springpod</title>
+    <link id="favicon" rel="icon" href="https://i.postimg.cc/7ZCmQx33/favicon.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
@@ -23,6 +23,8 @@
             padding: 30px 50px;
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
         }
         h1 {
             color: #333;
@@ -33,6 +35,9 @@
             color: #666;
             font-size: 1.2em;
             margin-bottom: 30px;
+        }
+        .toggle-menu {
+            margin-bottom: 20px;
         }
         .links {
             display: flex;
@@ -47,28 +52,11 @@
             border-radius: 5px;
             font-size: 1.1em;
             transition: background-color 0.3s;
-        }
-        .eaglercraft {
-            background-color: #ccc;
-            color: #666;
-            cursor: not-allowed;
-        }
-        .eaglercraft:hover {
-            background-color: #ccc;
-        }
-        .chess {
-            background-color: #ccc;
-            color: #666;
-            cursor: not-allowed;
-        }
-        .chess:hover {
-            background-color: #ccc;
-        }
-        .active {
+            color: #333;
             background-color: #007BFF;
             color: #fff;
         }
-        .active:hover {
+        a:hover {
             background-color: #0056b3;
         }
         .readme {
@@ -76,39 +64,35 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        .readme h2 {
-            font-size: 1.8em;
-            color: #333;
-        }
-        .readme p {
-            font-size: 1em;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .readme ul {
-            list-style-type: disc;
-            margin: 0 0 15px 20px;
-        }
-        .readme li {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to School Springpod</h1>
-        <p>This website disguises itself as Springpod for school purposes. Created by an anonymous developer.</p>
-        <div class="links">
-            <a href="cityguesser.html" class="active">City Guesser (Hidden by Traffic Springpod)</a>
-            <a href="infinitecraft.html" class="active">Infinite Craft (Hidden by British Library Springpod)</a>
+        <h1 id="page-title">Welcome to School Springpod</h1>
+        <p id="page-description">This website disguises itself as Springpod for school purposes. Created by an anonymous developer.</p>
+        
+        <!-- Toggle menu for selecting a different page to camouflage -->
+        <div class="toggle-menu">
+            <label for="page-select">Choose camouflage mode:</label>
+            <select id="page-select">
+                <option value="springpod">Springpod</option>
+                <option value="drfrostmaths">Dr Frost Maths</option>
+                <option value="edulinkone">EduLink One</option>
+            </select>
         </div>
+
+        <div class="links">
+            <a href="cityguesser.html">City Guesser</a>
+            <a href="infinitecraft.html">Infinite Craft</a>
+        </div>
+
         <div class="readme" id="readme">
-            <h2></h2>
             <!-- Content will be inserted here -->
         </div>
     </div>
 
     <script>
+        // Load and render README content
         fetch('readme.md')
             .then(response => response.text())
             .then(text => {
@@ -117,6 +101,40 @@
             .catch(error => {
                 console.error('Error fetching README:', error);
             });
+
+        // Get the current year for dynamic title
+        const currentYear = new Date().getFullYear();
+        const springpodTitle = `The World of The British Library [April '${String(currentYear).slice(-2)}] - Springpod`;
+
+        // Elements to change
+        const pageSelect = document.getElementById('page-select');
+        const favicon = document.getElementById('favicon');
+        const pageTitle = document.getElementById('page-title');
+        const pageDescription = document.getElementById('page-description');
+
+        // Toggle title, favicon, and text based on selection
+        pageSelect.addEventListener('change', function() {
+            switch (pageSelect.value) {
+                case 'springpod':
+                    document.title = springpodTitle;
+                    favicon.href = 'https://i.postimg.cc/7ZCmQx33/favicon.png';
+                    pageTitle.innerText = 'Welcome to School Springpod';
+                    pageDescription.innerText = 'This website disguises itself as Springpod for school purposes. Created by an anonymous developer.';
+                    break;
+                case 'drfrostmaths':
+                    document.title = 'Dr Frost Learning';
+                    favicon.href = 'https://i.ibb.co/CwxG1YZ/favicon.png';
+                    pageTitle.innerText = 'Welcome to Dr Frost Maths';
+                    pageDescription.innerText = 'This website mimics Dr Frost Maths for educational purposes. Created by an anonymous developer.';
+                    break;
+                case 'edulinkone':
+                    document.title = 'EduLink One';
+                    favicon.href = 'https://i.ibb.co/y4JQ6KT/favicon-1.png';
+                    pageTitle.innerText = 'Welcome to EduLink One';
+                    pageDescription.innerText = 'This website camouflages as EduLink One for educational purposes. Created by an anonymous developer.';
+                    break;
+            }
+        });
     </script>
 </body>
 </html>
