@@ -90,7 +90,8 @@
 
         <div class="links">
             <a href="#" id="cityguesser-link">City Guesser</a>
-            <a href="#" id="eaglercraft-link">Eaglercraft: Minecraft Unblocked in Browser</a>
+            <a href="#" id="eaglercraft-link">Minecraft</a>
+            <a href="#" id="pizzaedition-link">The Pizza Edition</a>
         </div>
 
         <div class="readme" id="readme">
@@ -160,6 +161,12 @@
         document.getElementById('eaglercraft-link').addEventListener('click', (e) => {
             e.preventDefault();
             showIframe('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html');
+        });
+
+                // Event listener for City Guesser link to show iframe
+        document.getElementById('pizzaedition-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showIframe('https://thepizzaedition.github.io/index.html');
         });
     </script>
 </body>
